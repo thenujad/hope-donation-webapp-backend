@@ -1,0 +1,53 @@
+eureka:
+  client:
+    register-with-eureka: false
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
+        - id: request-service
+          uri: lb://REQUEST-SERVICE
+          predicates:
+            - Path=/requests/**
+        - id: event-service
+          uri: lb://EVENT-SERVICE
+          predicates:
+            - Path=/events/**
+        - id: donation-service
+          uri: lb://DONATION-SERVICE
+          predicates:
+            - Path=/donations/**
+        - id: file-service
+          uri: lb://FILE-SERVICE
+          predicates:
+            - Path=/files/**
+        - id: validation-service
+          uri: lb://VALIDATION-SERVICE
+          predicates:
+            - Path=/validate/**
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedMethods:
+               - GET
+               - POST
+               - PUT
+               - DELETE
+            allowedHeaders: "*"
+            allowCredentials: true
