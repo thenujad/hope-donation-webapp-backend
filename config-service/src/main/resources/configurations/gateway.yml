@@ -30,7 +30,7 @@ spring:
           uri: http://localhost:8073
           predicates:
             - Path=/donations/**
-        - id: file-service
+        - id: file-upload
           uri: http://localhost:8074
           predicates:
             - Path=/files/**
