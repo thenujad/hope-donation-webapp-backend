@@ -8,13 +8,21 @@
         <outputRelativeToContentRoot value="true" />
         <module name="file-upload" />
         <module name="config-service" />
-        <module name="event-management" />
         <module name="user-management" />
         <module name="api-gateway" />
         <module name="request-management" />
-        <module name="donation-management" />
         <module name="validation" />
         <module name="discovery-service" />
+      </profile>
+      <profile name="Annotation profile for donation-management" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="donation-management" />
+        <module name="event-management" />
       </profile>
     </annotationProcessing>
   </component>

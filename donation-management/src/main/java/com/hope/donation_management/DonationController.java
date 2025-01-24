@@ -31,4 +31,3 @@ public class DonationController {
         return ResponseEntity.ok(donationService.getDonationsByUserId(userId));
     }
 }
-
