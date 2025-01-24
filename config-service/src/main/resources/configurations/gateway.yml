@@ -15,27 +15,27 @@ spring:
           enabled: true
       routes:
         - id: user-management
-          uri: lb://USER-SERVICE
+          uri: http://localhost:8070
           predicates:
             - Path=/users/**
-        - id: request-service
-          uri: lb://REQUEST-SERVICE
+        - id: request-management
+          uri: http://localhost:8071
           predicates:
             - Path=/requests/**
-        - id: event-service
-          uri: lb://EVENT-SERVICE
+        - id: event-management
+          uri: http://localhost:8072
           predicates:
             - Path=/events/**
-        - id: donation-service
-          uri: lb://DONATION-SERVICE
+        - id: donation-management
+          uri: http://localhost:8073
           predicates:
             - Path=/donations/**
         - id: file-service
-          uri: lb://FILE-SERVICE
+          uri: http://localhost:8074
           predicates:
             - Path=/files/**
         - id: validation-service
-          uri: lb://VALIDATION-SERVICE
+          uri: http://localhost:8075
           predicates:
             - Path=/validate/**
       default-filters:
