@@ -1,1 +1,9 @@
-spring.application.name=request-management
+spring:
+  application:
+    name: user-management
+  config:
+    import: optional:configserver:http://localhost:8888
+  data:
+    mongodb:
+      database: user_hope_db
+      uri: mongodb+srv://admin:1hSBcmzIL9YI4iCr@smpdb.0uqjv6r.mongodb.net
