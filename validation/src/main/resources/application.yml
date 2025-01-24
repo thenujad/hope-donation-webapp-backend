@@ -1,1 +1,8 @@
-spring.application.name=request-management
+spring:
+  application:
+    name: validation-service
+  config:
+    import: optional:configserver:http://localhost:8888
+  data:
+    mongodb:
+      uri: mongodb+srv://nalandashihan:123@hope.rhtvd.mongodb.net/?retryWrites=true&w=majority&appName=hope
