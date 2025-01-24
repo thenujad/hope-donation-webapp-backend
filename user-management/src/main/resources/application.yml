@@ -6,4 +6,4 @@ spring:
   data:
     mongodb:
       database: user_hope_db
-      uri: mongodb+srv://admin:1hSBcmzIL9YI4iCr@smpdb.0uqjv6r.mongodb.net
+      uri: mongodb+srv://nalandashihan:123@hope.rhtvd.mongodb.net/?retryWrites=true&w=majority&appName=hope
