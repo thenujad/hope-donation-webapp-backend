@@ -29,7 +29,7 @@ public class FileController {
         File file = fileService.getFileById(fileId);
         if (file != null) {
             return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileModel.getFileName() + "\"")
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
                     .body(new ByteArrayResource(file.getData()));
         }
         return ResponseEntity.notFound().build();
