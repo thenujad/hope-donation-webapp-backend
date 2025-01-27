@@ -1,12 +1,23 @@
 package com.hope.file_upload;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "files")
 @Data  // Lombok annotation to generate getters, setters, constructors, and toString method
 public class File {
-
+    @JsonSerialize(using = ToStringSerializer.class)
+    @MongoId(FieldType.OBJECT_ID)
     private String id;
     private String fileName;
     private String fileType;

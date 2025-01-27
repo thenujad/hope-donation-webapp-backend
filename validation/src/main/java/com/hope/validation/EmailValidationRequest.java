@@ -12,11 +12,9 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class EventValidationRequest {
+@Data // Lombok annotation for getters, setters, constructors, etc.
+public class EmailValidationRequest {
     @JsonSerialize(using = ToStringSerializer.class)
     @MongoId(FieldType.OBJECT_ID)
-    private String eventName;
-    private String eventDate; // Format: YYYY-MM-DD
-    private String location;
+    private String email;
 }
