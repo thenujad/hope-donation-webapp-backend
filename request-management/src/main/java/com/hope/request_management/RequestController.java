@@ -1,6 +1,5 @@
 package com.hope.request_management;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +29,4 @@ public class RequestController {
         return ResponseEntity.ok(requestService.updateRequestStatus(id, status));
     }
 }
-
 
