@@ -14,12 +14,13 @@ public class FileService {
     private FileRepository fileRepository;
 
     // Upload a file
-    public File uploadFile(MultipartFile filem) throws IOException {
-        File file = new File();
-        file.setFileName(file.getOriginalFilename());
-        file.setFileType(file.getContentType());
-        file.setData(file.getBytes());
-        return fileRepository.save(filem);
+    public File uploadFile(MultipartFile file) throws IOException {
+        File uploadedFile = File.builder()
+                .fileName(file.getOriginalFilename())
+                .fileType(file.getContentType())
+                .data(file.getBytes())
+                .build();
+        return fileRepository.save(uploadedFile);
     }
 
     // Retrieve a file by ID

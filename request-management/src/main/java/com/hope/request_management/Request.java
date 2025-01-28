@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(collection = "requests")
+@Document(collection = "request")
 public class Request {
     @JsonSerialize(using = ToStringSerializer.class)
     @MongoId(FieldType.OBJECT_ID)

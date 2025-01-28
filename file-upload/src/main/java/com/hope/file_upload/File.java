@@ -13,8 +13,8 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "files")
-@Data  // Lombok annotation to generate getters, setters, constructors, and toString method
+@Data
+@Document(collection = "file")
 public class File {
     @JsonSerialize(using = ToStringSerializer.class)
     @MongoId(FieldType.OBJECT_ID)
@@ -22,5 +22,5 @@ public class File {
     private String fileName;
     private String fileType;
     private byte[] data;
-
 }
+
