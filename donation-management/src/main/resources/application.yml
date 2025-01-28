@@ -1,6 +1,8 @@
 spring:
   application:
     name: donation-management
+  cache:
+    type: caffeine
   config:
     import: optional:configserver:http://localhost:8888
   data:
