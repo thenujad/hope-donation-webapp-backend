@@ -2,6 +2,7 @@ package com.hope.request_management;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 @Service
 public class RequestService {
@@ -9,23 +10,27 @@ public class RequestService {
     @Autowired
     private RequestRepository requestRepository;
 
-    // Create a new request
+    // Create request
     public Request createRequest(Request request) {
+        request.setStatus("Pending"); // Ensure Request class has setStatus()
         return requestRepository.save(request);
     }
 
-    // Retrieve request by ID
+    // Get request by ID
     public Request getRequestById(String id) {
-        return requestRepository.findById(id).orElse(null);
+        return requestRepository.findById(id).orElseThrow(() -> new RuntimeException("Request not found"));
     }
 
-    // Update request status by ID
+    // Update request status
     public Request updateRequestStatus(String id, String status) {
-        Request request = requestRepository.findById(id).orElse(null);
-        if (request != null) {
-            request.setStatus(status);
+        Optional<Request> optionalRequest = requestRepository.findById(id);
+        if (optionalRequest.isPresent()) {
+            Request request = optionalRequest.get();
+            request.setStatus(status);  // Ensure this method exists in Request.java
             return requestRepository.save(request);
+        } else {
+            throw new RuntimeException("Request not found");
         }
-        return null;
     }
 }
+

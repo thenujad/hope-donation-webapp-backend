@@ -1,25 +1,46 @@
 package com.hope.request_management;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.FieldType;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
-@Data
-@Builder
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Document(collection = "request")
+@Document(collection = "requests")
 public class Request {
-    @JsonSerialize(using = ToStringSerializer.class)
-    @MongoId(FieldType.OBJECT_ID)
-    private String id;
 
-    private String userId;
+    @Id
+    private String id;
     private String description;
     private String status;
+
+    // Constructors
+    public Request() {}
+
+    public Request(String description, String status) {
+        this.description = description;
+        this.status = status;
+    }
+
+    // Getters and Setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;  // This method was missing
+    }
 }
